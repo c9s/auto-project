@@ -19,10 +19,6 @@ pkgconfig_DATA = auto-project.pc
 
 EXTRA_DIST = \
 	autogen.sh \
-	bench.html \
-	demo.c \
-	gen_routes.rb \
-	HACKING.md \
 	LICENSE \
 	README.md \
 	$(NULL)

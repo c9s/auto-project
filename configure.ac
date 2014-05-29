@@ -1,4 +1,4 @@
-AC_INIT([r3], 1.0.0)
+AC_INIT([auto-project], 1.0.0)
 AC_PREREQ([2.64])
 AC_CONFIG_HEADERS(config.h)
 AC_CONFIG_MACRO_DIR([m4])
@@ -102,7 +102,7 @@ AM_CONDITIONAL(HAVE_CHECK, test x"$have_check" = "xyes")
 
 
 AC_CONFIG_FILES([
-  r3.pc
+  auto-project.pc
   Makefile
   src/Makefile
   tests/Makefile
