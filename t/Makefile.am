@@ -1,52 +1,19 @@
 # INCLUDES                    = @CHECK_CFLAGS@
-# if HAVE_CHECK
-# TESTS                       = check_tree
-# else
-# TESTS                       =
-# endif
-TESTS                       = check_tree
+TESTS                       = check_main
 AM_CFLAGS = -ggdb -Wall $(DEPS_CFLAGS) -I$(top_builddir) -I$(top_builddir)/include  @CHECK_CFLAGS@
-AM_LDFLAGS = $(DEPS_LIBS) -L$(top_builddir)/src -lr3 @CHECK_LIBS@
-
-
-noinst_HEADERS = \
-	bench.h \
-	$(NULL)
+AM_LDFLAGS = $(DEPS_LIBS) -L$(top_builddir)/src @CHECK_LIBS@
 
 dist_noinst_DATA = \
 	$(NULL)
 
-if USE_JEMALLOC
-AM_CFLAGS += -ljemalloc
-endif
+noinst_PROGRAMS             = $(TESTS)
 
-if ENABLE_GRAPHVIZ
-TESTS += check_gvc
-check_gvc_SOURCES = check_gvc.c
-# check_gvc_LDADD = $(GVC_DEPS_LIBS) $(DEPS_LIBS) -L$(top_builddir)/src -lr3 @CHECK_LIBS@
-# check_gvc_CFLAGS = $(GVC_DEPS_CFLAGS) $(DEPS_CFLAGS) -I$(top_builddir) -I$(top_builddir)/include @CHECK_CFLAGS@
-AM_CFLAGS += $(GVC_DEPS_CFLAGS)
-AM_LDFLAGS += $(GVC_DEPS_LIBS)
-endif
-
-
-TESTS += benchmark
-benchmark_SOURCES = bench.c
-
-
-
-# noinst_PROGRAMS             = $(TESTS)
-check_tree_SOURCES = check_tree.c
-# check_tree_LDADD=$(DEPS_LIBS) -L$(top_builddir)/src -lr3 @CHECK_LIBS@
-# check_tree_CFLAGS=$(DEPS_CFLAGS) -I$(top_builddir) -I$(top_builddir)/include @CHECK_CFLAGS@
-
-TESTS += check_slug
-check_slug_SOURCES = check_slug.c
-
+check_main_SOURCES = check_main.c
+# check_main_LDADD=$(DEPS_LIBS) -L$(top_builddir)/src @CHECK_LIBS@
+# check_main_CFLAGS=$(DEPS_CFLAGS) -I$(top_builddir) -I$(top_builddir)/include @CHECK_CFLAGS@
 
 check_PROGRAMS = $(TESTS)
 
-
 # AM_CFLAGS=$(DEPS_CFLAGS) -I$(top_builddir)/include
 # AM_CFLAGS=$(DEPS_CFLAGS) -I$(top_builddir) -I$(top_builddir)/include
-CLEANFILES                  = check_tree.log
+CLEANFILES    += check_main.log
