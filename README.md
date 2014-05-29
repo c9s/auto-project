@@ -3,7 +3,7 @@ auto-project
 
 auto-project is a template repository for autotools-based projects.
 
-## First-Time Configuration
+### First-Time Configuration
 
 * Run `libtoolize -c -f`
 * Edit `configure.ac`
@@ -18,11 +18,11 @@ Or you can edit all files in one time, then run:
 
 * `./autogen.sh`
 
-## Build
+### Build
 
     ./configure
     make
 
-## Test
+### Test
 
     make check
